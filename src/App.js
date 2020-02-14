@@ -18,12 +18,20 @@ class App extends Component {
         });
     };
 
+    handleInput = (event) =>{
+      console.log('chandged', event.target.value);
+      this.setState({
+        pageTitle:event.target.value
+      });
+    }
+
     render() {
         console.log("render");
         const cars = this.state.cars;
         return (
             <div>
                 <h1>{this.state.pageTitle}</h1>
+                <input onChange={this.handleInput}/>
                 <button
                     onClick={this.changeTitleHandler.bind(this, "Changed!")}
                 >
