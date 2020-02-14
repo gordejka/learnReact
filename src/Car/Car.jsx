@@ -6,5 +6,6 @@ export default props => (
         <p>
             Year: <strong>{props.year}</strong>
         </p>
+        <button onClick={props.onChangeTitle}>Click</button>
     </div>
 );
