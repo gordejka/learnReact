@@ -9,48 +9,48 @@ class App extends Component {
             { name: "Bmw", year: 2016 },
             { name: "Audi", year: 2012 }
         ],
-        pageTitle: "React components"
+        pageTitle: "React components",
+        showCars: false
     };
 
-    changeTitleHandler = newTitle => {
+    toggleCarsHandler = () => {
         this.setState({
-            pageTitle: newTitle
+            showCars: !this.state.showCars
         });
     };
 
-    handleInput = event => {
-        console.log("chandged", event.target.value);
-        this.setState({
-            pageTitle: event.target.value
-        });
+    changeTitleHandler = pageTitle => {
+        this.setState({ pageTitle });
     };
 
     render() {
         console.log("render");
+
+        let cars = null;
+        if (this.state.showCars){
+          cars = this.state.cars.map((car, index) => {
+            return (
+                <Car
+                    key={index}
+                    name={car.name}
+                    year={car.year}
+                    onChangeTitle={this.changeTitleHandler.bind(
+                        this,
+                        car.name
+                    )}
+                />
+            );
+        })
+        }
+
         return (
             <div>
                 <h1>{this.state.pageTitle}</h1>
-                <input onChange={this.handleInput} />
-                <button
-                    onClick={this.changeTitleHandler.bind(this, "Changed!")}
-                >
-                    Change title
+                <button onClick={this.toggleCarsHandler.bind(this, "Changed!")}>
+                    Toggle cars
                 </button>
 
-                {this.state.cars.map((car, index) => {
-                    
-                    return (
-                        <Car
-                            key={index}
-                            name={car.name}
-                            year={car.year}
-                            onChangeTitle={this.changeTitleHandler.bind(
-                                this,
-                                car.name
-                            )}
-                        />
-                    );
-                })}
+                { cars }
             </div>
         );
     }
