@@ -19,28 +19,46 @@ class App extends Component {
         });
     };
 
-    changeTitleHandler = pageTitle => {
-        this.setState({ pageTitle });
-    };
+    onChangeName(name, index) {
+        //console.log(name, index);
+        const car = this.state.cars[index];
+        car.name = name;
+        //клонирование массива
+        //const cars = this.state.cars.concat()
+        //клонирование массива
+        const cars = [...this.state.cars];
+        cars[index] = car;
+        this.setState({
+            cars
+        });
+    }
+
+    deleteHendler(index) {
+        const cars = this.state.cars.concat();
+        cars.splice(index, 1);
+        this.setState({
+            cars
+        });
+    }
 
     render() {
         console.log("render");
 
         let cars = null;
-        if (this.state.showCars){
-          cars = this.state.cars.map((car, index) => {
-            return (
-                <Car
-                    key={index}
-                    name={car.name}
-                    year={car.year}
-                    onChangeTitle={this.changeTitleHandler.bind(
-                        this,
-                        car.name
-                    )}
-                />
-            );
-        })
+        if (this.state.showCars) {
+            cars = this.state.cars.map((car, index) => {
+                return (
+                    <Car
+                        key={index}
+                        name={car.name}
+                        year={car.year}
+                        onDelete={this.deleteHendler.bind(this, index)}
+                        onChangeName={event =>
+                            this.onChangeName(event.target.value, index)
+                        }
+                    />
+                );
+            });
         }
 
         return (
@@ -49,8 +67,7 @@ class App extends Component {
                 <button onClick={this.toggleCarsHandler.bind(this, "Changed!")}>
                     Toggle cars
                 </button>
-
-                { cars }
+                {cars}
             </div>
         );
     }
