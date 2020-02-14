@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.scss";
 import Car from "./Car/Car";
 
-class App extends Component {
+class App extends React.Component {
     constructor(props) {
         console.log('App constructor');
         super(props);
