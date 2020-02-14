@@ -1,6 +1,7 @@
 import React from "react";
 //import Radium from "radium";
 import "./Car.scss";
+//coomit update life cycles
 
 class Car extends React.Component {
     UNSAFE_componentWillReceiveProps(nextProps) {
@@ -18,7 +19,7 @@ class Car extends React.Component {
     }
 
     render() {
-        console.log("Car render");
+        console.log("Car render ");
         const inputClasses = ["input"];
         if (this.props.name !== "") {
             inputClasses.push("green");
