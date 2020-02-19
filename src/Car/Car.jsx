@@ -4,21 +4,37 @@ import "./Car.scss";
 //coomit update life cycles
 
 class Car extends React.Component {
-    UNSAFE_componentWillReceiveProps(nextProps) {
-        console.log("Car componentWillReceiveProps", nextProps);
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     console.log("Car componentWillReceiveProps", nextProps);
+    // }
     shouldComponentUpdate(nextProps, nextState) {
         console.log("Car shouldComponentUpdate", nextProps, nextState);
         return nextProps.name.trim() !== this.props.name.trim() ;
     }
-    UNSAFE_componentWillUpdate(nextProps, nextState) {
-        console.log("Car componentWillUpdate", nextProps, nextState);
-    }
+    // componentWillUpdate(nextProps, nextState) {
+    //     console.log("Car componentWillUpdate", nextProps, nextState);
+    // }
     componentDidUpdate() {
         console.log("Car componentDidUpdate");
     }
+    componentWillUnmount(){
+        console.log('Car componentWillUnmount')
+    }
+
+    // static getDerivedStateFromProps(nextProps, prevState){
+    //     console.log('car getDerivedStateFromProps', nextProps, prevState);
+    //     return prevState;
+    // }
+
+    // getSnapshotBeforeUpdate(){
+    //     console.log('car getSnapshotBeforeUpdate');
+    // }
+
 
     render() {
+        if (Math.random() > 0.7){
+            throw new Error('Eroorroor');
+        }
         console.log("Car render ");
         const inputClasses = ["input"];
         if (this.props.name !== "") {
