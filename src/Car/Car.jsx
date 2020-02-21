@@ -1,9 +1,18 @@
 import React from "react";
 import classes from "./Car.scss";
 import withClass from "../hoc/withClass";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 class Car extends React.Component {
+    constructor(props) {
+        super(props)
+        this.inputRef = React.createRef();
+    }
+
+    componentDidMount() {
+        this.inputRef.current.focus();
+    }
+
     render() {
         const inputClasses = ["input"];
         if (this.props.name !== "") {
@@ -23,6 +32,7 @@ class Car extends React.Component {
                     Year: <strong>{this.props.year}</strong>
                 </p>
                 <input
+                    ref={this.inputRef}
                     className={inputClasses.join(" ")}
                     type="text"
                     onChange={this.props.onChangeName}
@@ -37,6 +47,6 @@ Car.propTypes = {
     name: PropTypes.string.isRequired,
     year: PropTypes.number,
     onChangeName: PropTypes.func,
-    onDelete:PropTypes.func
-}
+    onDelete: PropTypes.func
+};
 export default withClass(Car, classes.car);
