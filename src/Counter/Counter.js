@@ -8,7 +8,7 @@ export default class Counter extends React.Component{
 
     addCounter = () => {
         this.setState((prevState)=>{
-            return{
+            return{ 
                 counter: prevState.counter +1
             }
         })
