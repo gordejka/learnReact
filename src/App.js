@@ -2,6 +2,8 @@ import React from "react";
 import "./App.scss";
 import Car from "./Car/Car";
 import ErrorBoundary from './errorBoundary/errorBoundary'
+import Counter from "./Counter/Counter";
+
 
 class App extends React.Component {
     constructor(props) {
@@ -10,8 +12,8 @@ class App extends React.Component {
         this.state = {
             cars: [
                 { name: "Ford", year: 2018 },
-                { name: "Bmw", year: 2016 },
-                { name: "Audi", year: 2012 }
+                // { name: "Bmw", year: 2016 },
+                // { name: "Audi", year: 2012 }
             ],
             pageTitle: "React components",
             showCars: false
@@ -62,7 +64,6 @@ class App extends React.Component {
                 return (
                     <ErrorBoundary key={index} >
                         <Car
-                            
                             name={car.name}
                             year={car.year}
                             onDelete={this.deleteHendler.bind(this, index)}
@@ -77,6 +78,8 @@ class App extends React.Component {
 
         return (
             <div>
+                <Counter/>
+
                 <h1>{this.state.pageTitle}</h1>
                 <button onClick={this.toggleCarsHandler.bind(this, "Changed!")}>
                     Toggle cars
