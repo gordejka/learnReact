@@ -81,7 +81,7 @@ class App extends React.Component {
         }
 
         return (
-            <div>
+            <div className="App">
                 <ClickedContext.Provider value={this.state.clicked}>
                     <Counter/>
                 </ClickedContext.Provider>
