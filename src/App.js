@@ -3,6 +3,7 @@ import "./App.scss";
 import Car from "./Car/Car";
 import ErrorBoundary from './errorBoundary/errorBoundary'
 import Counter from "./Counter/Counter";
+import Counter3 from "./Counter3/Counter3";
 
 
 export const ClickedContext = React.createContext(false);
@@ -86,7 +87,7 @@ class App extends React.Component {
                     <Counter/>
                 </ClickedContext.Provider>
                 
-
+                <Counter3/>
                 <h1>{this.state.pageTitle}</h1>
                 <button onClick={this.toggleCarsHandler.bind(this, "Changed!")}>
                     Toggle cars
