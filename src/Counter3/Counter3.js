@@ -4,8 +4,9 @@ function Counter3(props) {
     return (
         <div>
             <h1>
-                Counter3
+                {props.name}
             </h1>
+
         </div>
     );
 }

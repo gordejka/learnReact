@@ -87,7 +87,7 @@ class App extends React.Component {
                     <Counter/>
                 </ClickedContext.Provider>
                 
-                <Counter3/>
+                <Counter3 name="counter_new_3"/>
                 <h1>{this.state.pageTitle}</h1>
                 <button onClick={this.toggleCarsHandler.bind(this, "Changed!")}>
                     Toggle cars
