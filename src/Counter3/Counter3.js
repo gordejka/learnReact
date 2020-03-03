@@ -3,9 +3,9 @@ import React from 'react';
 function Counter3(props) {
     return (
         <div>
-            <h1>
+            <h2>
                 {props.name}
-            </h1>
+            </h2>
 
         </div>
     );
